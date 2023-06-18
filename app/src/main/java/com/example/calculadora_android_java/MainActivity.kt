@@ -1,103 +1,82 @@
-package com.example.calculadora_android_java;
+package com.example.calculadora_android_java
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.calculadora_android_java.databinding.ActivityMainBinding
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+class MainActivity : AppCompatActivity() {
+    private var mBinding: ActivityMainBinding? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding = ActivityMainBinding.inflate(
+            layoutInflater
+        )
+        setContentView(mBinding!!.root)
 
-import com.example.calculadora_android_java.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+        //************************CAMBIOSS*********************
+        //El uso de lo !! para referenciar
+        //El uso del val para crear constantes
+        //El uso del $ para concatenar
+        //El cambio de la funcion ParseInt a toInt().
+        //*****************************************************
 
-    private ActivityMainBinding mBinding;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(mBinding.getRoot());
-
-        // busco elementos
-
-        //mBinding.Name.setText("JOSE PEÑA");
-
-        mBinding.add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String FirstNumber = mBinding.FirstNumber.getText().toString();
-                String SecondNumber = mBinding.SecondNumber.getText().toString();
-
-                if(FirstNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "First number empty",Toast.LENGTH_LONG).show();
-                }
-                if(SecondNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Second number empty",Toast.LENGTH_LONG).show();
-                }
-                if( FirstNumber.isEmpty() == false && SecondNumber.isEmpty() ==false){
-                    int result = Integer.parseInt(FirstNumber) + Integer.parseInt(SecondNumber);
-                    mBinding.result.setText("Result:"+result);
-                }
-
+        mBinding!!.add.setOnClickListener {
+            val FirstNumber = mBinding!!.FirstNumber.text.toString()
+            val SecondNumber = mBinding!!.SecondNumber.text.toString()
+            if (FirstNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "First number empty", Toast.LENGTH_LONG).show()
             }
-        });
-        mBinding.subtract.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String FirstNumber = mBinding.FirstNumber.getText().toString();
-                String SecondNumber = mBinding.SecondNumber.getText().toString();
-
-                if(FirstNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "First number empty",Toast.LENGTH_LONG).show();
-                }
-                if(SecondNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Second number empty",Toast.LENGTH_LONG).show();
-                }
-                if( FirstNumber.isEmpty() == false && SecondNumber.isEmpty() ==false){
-                    int result = Integer.parseInt(FirstNumber) - Integer.parseInt(SecondNumber);
-                    mBinding.result.setText("Result:"+result);
-                }
-
+            if (SecondNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Second number empty", Toast.LENGTH_LONG).show()
             }
-        });
-        mBinding.divide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String FirstNumber = mBinding.FirstNumber.getText().toString();
-                String SecondNumber = mBinding.SecondNumber.getText().toString();
-
-                if(FirstNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "First number empty",Toast.LENGTH_LONG).show();
-                }
-                if(SecondNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Second number empty",Toast.LENGTH_LONG).show();
-                }
-                if( FirstNumber.isEmpty() == false && SecondNumber.isEmpty() ==false){
-                    int result = Integer.parseInt(FirstNumber) / Integer.parseInt(SecondNumber);
-                    mBinding.result.setText("Result:"+result);
-                }
-
+            if (FirstNumber.isEmpty() == false && SecondNumber.isEmpty() == false) {
+                val result = FirstNumber.toInt() + SecondNumber.toInt()
+                mBinding!!.result.text = "Result:$result"
             }
-        });
-        mBinding.multply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String FirstNumber = mBinding.FirstNumber.getText().toString();
-                String SecondNumber = mBinding.SecondNumber.getText().toString();
-
-                if(FirstNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "First number empty",Toast.LENGTH_LONG).show();
-                }
-                if(SecondNumber.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Second number empty",Toast.LENGTH_LONG).show();
-                }
-                if( FirstNumber.isEmpty() == false && SecondNumber.isEmpty() ==false){
-                    int result = Integer.parseInt(FirstNumber) * Integer.parseInt(SecondNumber);
-                    mBinding.result.setText("Result:"+result);
-                }
-
+        }
+        mBinding!!.subtract.setOnClickListener {
+            val FirstNumber = mBinding!!.FirstNumber.text.toString()
+            val SecondNumber = mBinding!!.SecondNumber.text.toString()
+            if (FirstNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "First number empty", Toast.LENGTH_LONG).show()
             }
-        });
-
+            if (SecondNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Second number empty", Toast.LENGTH_LONG).show()
+            }
+            if (FirstNumber.isEmpty() == false && SecondNumber.isEmpty() == false) {
+                val result = FirstNumber.toInt() - SecondNumber.toInt()
+                mBinding!!.result.text = "Result:$result"
+            }
+        }
+        mBinding!!.divide.setOnClickListener {
+            val FirstNumber = mBinding!!.FirstNumber.text.toString()
+            val SecondNumber = mBinding!!.SecondNumber.text.toString()
+            if (FirstNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "First number empty", Toast.LENGTH_LONG).show()
+            }
+            if (SecondNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Second number empty", Toast.LENGTH_LONG).show()
+            }
+            if (FirstNumber.isEmpty() == false && SecondNumber.isEmpty() == false) {
+                val result = FirstNumber.toInt() / SecondNumber.toInt()
+                mBinding!!.result.text = "Result:$result"
+            }
+        }
+        mBinding!!.multply.setOnClickListener {
+            val FirstNumber = mBinding!!.FirstNumber.text.toString()
+            val SecondNumber = mBinding!!.SecondNumber.text.toString()
+            if (FirstNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "First number empty", Toast.LENGTH_LONG).show()
+            }
+            if (SecondNumber.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Second number empty", Toast.LENGTH_LONG).show()
+            }
+            if (FirstNumber.isEmpty() == false && SecondNumber.isEmpty() == false) {
+                val result = FirstNumber.toInt() * SecondNumber.toInt()
+                mBinding!!.result.text = "Result:$result"
+            }
+        }
     }
 }
